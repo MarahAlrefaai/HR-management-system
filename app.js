@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 let allemp=[];
 function employee (EmployeeID,FullName,Department,Level)
 {
@@ -9,8 +9,27 @@ function employee (EmployeeID,FullName,Department,Level)
   allemp.push(this);
   
 }
-employee.prototype.render=function(){
-document.write(`<p>${this.employeeId}    ${this.fullname}    ${this.department}   ${this.level} \n</p>`);
+employee.prototype.render=function(empid1){
+
+  div1.appendChild(document.createElement("br"));
+
+  let createimg=document.createElement("img");
+  createimg.setAttribute("src","images/itsme.jpg");
+  createimg.setAttribute("alt","hello");
+  createimg.style.width="150px"
+  div1.appendChild(document.createElement("br"));
+  //div1.appendChild(createimg);
+  let div2=document.getElementById("cards");
+  div2.appendChild(createimg);
+
+
+  let div3=document.createElement("div");
+  div2.appendChild(div3);
+  let nh2=document.createElement("h3");
+  nh2.textContent="name: "+ this.fullname+"id : "+this.employeeId+"department : "+this.department+" level : "+this.level+"\n"+ empid1
+  div3.appendChild(nh2);
+
+/*document.write(`<p>${this.employeeId}    ${this.fullname}    ${this.department}   ${this.level} \n</p>`);*/
 //document.write("<h1>hello<h1>");
 };
 //add function
@@ -32,11 +51,62 @@ let  Safi=new employee(1003	,"Safi Walid"	,"Administration"	,"Mid-Senior");
 let Omar=new employee(1004	,"Omar Zaid",	"Development",	"Senior");
 let Rana=new employee(1005,	"Rana Saleh",	"Development",	"Junior");
 let Hadi =new employee(1006,	"Hadi Ahmad",	"Finance"	,"Mid-Senior");
-Ghazi.render();
-Lana.render();
-Tamara.render();
-Safi.render();
-Omar.render();
-Rana.render();
-Hadi.render();
-console.log(allemp);
+
+//console.table(allemp);
+//now i want to start dom for task 8 
+let arrOFoption=["Administration","Marketing","Development","Finance"];
+let arrOFlevel=["Junior","Mid-Senior","Senior"];
+let div1=document.getElementById("user1");
+//---------------------------------------------
+//choose department
+let sform=document.createElement("form");
+let sList=document.createElement("SELECT");
+div1.appendChild(sform);
+sform.appendChild(sList);
+for(let i=0;i<arrOFoption.length;i++){
+let opList=document.createElement("option");
+opList.textContent=arrOFoption[i];
+sList.appendChild(opList);
+}
+console.log(div1);
+//----------------------------------------------
+//choose level
+let sList1=document.createElement("SELECT");
+sform.appendChild(sList1);
+for(let i=0;i<arrOFoption.length;i++){
+let opList1=document.createElement("option");
+opList1.textContent=arrOFlevel[i];
+sList1.appendChild(opList1);
+}
+//-------------------------------------------
+//function to create 4 digit id 
+employee.prototype.empid=function (){
+  var seq = (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
+return seq;
+}
+//----------------------------------------------
+//create submit button 
+function btnfun(){
+
+  
+}
+let subButton=document.createElement("input");
+subButton.setAttribute("type","submit");
+subButton.setAttribute("value","Submit");
+div1.appendChild(subButton);
+subButton.addEventListener("click",btnfun);
+
+//--------------------------------------------
+//image url 
+
+//.log(div2);
+//-------------------------------------------
+Ghazi.render(Ghazi.empid());
+Lana.render(Lana.empid());
+Tamara.render(Tamara.empid());
+Safi.render(Safi.empid());
+Omar.render(Omar.empid());
+Rana.render(Rana.empid());
+Hadi.render(Hadi.empid());
+
+
