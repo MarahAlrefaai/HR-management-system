@@ -9,28 +9,26 @@ function employee (EmployeeID,FullName,Department,Level)
   allemp.push(this);
   
 }
-employee.prototype.render=function(empid1){
 
-  div1.appendChild(document.createElement("br"));
+employee.prototype.render=function(empid1,empinfocard1){
+
+let parentdiv=document.createElement("div");
+parentdiv.setAttribute("class","card");
+empinfocard1.appendChild(parentdiv);
 
   let createimg=document.createElement("img");
   createimg.setAttribute("src","images/itsme.jpg");
   createimg.setAttribute("alt","hello");
-  createimg.style.width="150px"
-  div1.appendChild(document.createElement("br"));
-  //div1.appendChild(createimg);
-  let div2=document.getElementById("cards");
-  div2.appendChild(createimg);
+  createimg.style.width="170px"
+  parentdiv.appendChild(createimg);
 
 
   let div3=document.createElement("div");
-  div2.appendChild(div3);
-  let nh2=document.createElement("h3");
-  nh2.textContent="name: "+ this.fullname+"id : "+this.employeeId+"department : "+this.department+" level : "+this.level+"\n"+ empid1
+  parentdiv.appendChild(div3);
+  let nh2=document.createElement("h5");
+  nh2.textContent="name: "+ this.fullname+"- id : "+this.employeeId+"\n department : "+this.department+"- level : "+this.level+"\n"+ empid1
   div3.appendChild(nh2);
 
-/*document.write(`<p>${this.employeeId}    ${this.fullname}    ${this.department}   ${this.level} \n</p>`);*/
-//document.write("<h1>hello<h1>");
 };
 //add function
 employee.prototype.salary=function(level){
@@ -52,7 +50,7 @@ let Omar=new employee(1004	,"Omar Zaid",	"Development",	"Senior");
 let Rana=new employee(1005,	"Rana Saleh",	"Development",	"Junior");
 let Hadi =new employee(1006,	"Hadi Ahmad",	"Finance"	,"Mid-Senior");
 
-//console.table(allemp);
+
 //now i want to start dom for task 8 
 let arrOFoption=["Administration","Marketing","Development","Finance"];
 let arrOFlevel=["Junior","Mid-Senior","Senior"];
@@ -86,9 +84,20 @@ return seq;
 }
 //----------------------------------------------
 //create submit button 
+var selecteddep="";
+  var selectedlev="";
+  let empinfocard=document.getElementById("empinfocard");
 function btnfun(){
+   selecteddep = sList.options[sList.selectedIndex].text;
+   selectedlev = sList1.options[sList1.selectedIndex].text;
+   for(let i =0;i<allemp.length;i++){
+  if((allemp[i].department==selecteddep)&&(allemp[i].level==selectedlev)){
+    allemp[i].render(allemp[i].empid(),empinfocard);
+  }
 
-  
+   }
+   
+//console.log(selectedlev);
 }
 let subButton=document.createElement("input");
 subButton.setAttribute("type","submit");
@@ -96,17 +105,14 @@ subButton.setAttribute("value","Submit");
 div1.appendChild(subButton);
 subButton.addEventListener("click",btnfun);
 
-//--------------------------------------------
-//image url 
-
-//.log(div2);
 //-------------------------------------------
-Ghazi.render(Ghazi.empid());
-Lana.render(Lana.empid());
-Tamara.render(Tamara.empid());
-Safi.render(Safi.empid());
-Omar.render(Omar.empid());
-Rana.render(Rana.empid());
-Hadi.render(Hadi.empid());
+
+/*Ghazi.render(Ghazi.empid(),empinfocard);
+Lana.render(Lana.empid(),empinfocard);
+Tamara.render(Tamara.empid(),empinfocard);
+Safi.render(Safi.empid(),empinfocard);
+Omar.render(Omar.empid(),empinfocard);
+Rana.render(Rana.empid(),empinfocard);
+Hadi.render(Hadi.empid(),empinfocard);*/
 
 

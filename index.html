@@ -28,7 +28,10 @@
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  width: 150px;;
+    float: left;
+    padding: 20px;
+    margin: 5px;
+  width: 170px;
 }
 
 .card:hover {
@@ -37,6 +40,13 @@
 
 .container {
   padding: 2px 16px;
+  
+}
+.mains{
+  padding:4px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align:justify;
 }
 
   </style>
@@ -44,11 +54,11 @@
 <body>
   
   <header>
-    <a href="accounting.html" target="_blank"><h2>accounting page </h2></a>
+    <a href="accsounting.html" target="_blank"><h2>accounting page </h2></a>
 
     
       </header>
-      <main>
+      <main class="mains"> 
 <!--employees informaton-->
 
 <hr>
@@ -57,9 +67,10 @@
 <!-- now i want to add form -->
 
 </div>
-<div class="card" id="cards">
-  
-  
+<!--<div class="card" id="cards"></div>-->
+<div id="empinfocard">
+
+
 </div>
 
 
