@@ -64,6 +64,7 @@ sform.appendChild(sList);
 for(let i=0;i<arrOFoption.length;i++){
 let opList=document.createElement("option");
 opList.textContent=arrOFoption[i];
+
 sList.appendChild(opList);
 }
 console.log(div1);
@@ -102,6 +103,9 @@ function btnfun(){
 let subButton=document.createElement("input");
 subButton.setAttribute("type","submit");
 subButton.setAttribute("value","Submit");
+subButton.style.width="100px";
+subButton.style.background="#008b8b";
+subButton.style.color="white";
 div1.appendChild(subButton);
 subButton.addEventListener("click",btnfun);
 
