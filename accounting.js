@@ -187,7 +187,7 @@ tr6.appendChild(td);
 
 let td1=document.createElement("td");
 td1.setAttribute("class","tstyle");
-td1.textContent=(parsArray.length-1);
+td1.textContent=(parsArray.length);
 tr6.appendChild(td1);
 
 let td3=document.createElement("td");

@@ -14,4 +14,10 @@
     <td>Francisco Chang</td>
     <td>Mexico</td>
   </tr>
+  <tfoot>
+    <tr>
+      <td>Sum</td>
+      <td>$180</td>
+    </tr>
+  </tfoot>
 </table>
