@@ -1,13 +1,28 @@
 'use strict';
-let allemp=[];
+employee.allemp=[];
 function employee (EmployeeID,FullName,Department,Level)
 {
   this.employeeId=EmployeeID;
   this.fullname=FullName;
   this.department=Department;
   this.level=Level;
-  allemp.push(this);
+  employee.allemp.push(this);
   
+}
+function add_all_emp_info_localStorage ()
+{
+  let stringfydata=JSON.stringify(employee.allemp);//convert data from array to string 
+  //now we caan save converted array to local storage
+localStorage.setItem("employee",stringfydata);
+}
+function get_all_emp_info_localStorage ()
+{
+  let getData=localStorage.getItem("employee");
+  let parsedData=JSON.parse(getData);
+  console.log(parsedData);
+  for (let i=0;i<parsedData.length;i++){
+    new employee(parsedData[i].employeeId,parsedData[i].fullname,parsedData[i].department,parsedData[i].level);
+  }
 }
 
 employee.prototype.render=function(empid1,empinfocard1){
@@ -28,6 +43,8 @@ empinfocard1.appendChild(parentdiv);
   let nh2=document.createElement("h5");
   nh2.textContent="name: "+ this.fullname+"- id : "+this.employeeId+"\n department : "+this.department+"- level : "+this.level+"\n"+ empid1
   div3.appendChild(nh2);
+  //localStorage.setItem("name","first card");
+  
 
 };
 //add function
@@ -91,9 +108,9 @@ var selecteddep="";
 function btnfun(){
    selecteddep = sList.options[sList.selectedIndex].text;
    selectedlev = sList1.options[sList1.selectedIndex].text;
-   for(let i =0;i<allemp.length;i++){
-  if((allemp[i].department==selecteddep)&&(allemp[i].level==selectedlev)){
-    allemp[i].render(allemp[i].empid(),empinfocard);
+   for(let i =0;i<employee.allemp.length;i++){
+  if((employee.allemp[i].department==selecteddep)&&(employee.allemp[i].level==selectedlev)){
+    employee.allemp[i].render(employee.allemp[i].empid(),empinfocard);
   }
 
    }
@@ -111,12 +128,6 @@ subButton.addEventListener("click",btnfun);
 
 //-------------------------------------------
 
-/*Ghazi.render(Ghazi.empid(),empinfocard);
-Lana.render(Lana.empid(),empinfocard);
-Tamara.render(Tamara.empid(),empinfocard);
-Safi.render(Safi.empid(),empinfocard);
-Omar.render(Omar.empid(),empinfocard);
-Rana.render(Rana.empid(),empinfocard);
-Hadi.render(Hadi.empid(),empinfocard);*/
 
-
+add_all_emp_info_localStorage();
+get_all_emp_info_localStorage();
