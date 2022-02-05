@@ -1,5 +1,7 @@
 'use strict';
-employee.allemp=[];
+
+let allemp=[];
+let empinfocard=document.getElementById("empinfocard");
 function employee (EmployeeID,FullName,Department,Level)
 {
   this.employeeId=EmployeeID;
@@ -72,7 +74,33 @@ let Hadi =new employee(1006,	"Hadi Ahmad",	"Finance"	,"Mid-Senior");
 let arrOFoption=["Administration","Marketing","Development","Finance"];
 let arrOFlevel=["Junior","Mid-Senior","Senior"];
 let div1=document.getElementById("user1");
-//---------------------------------------------
+//text area to full name
+//lebel for full name 
+
+let lebel1=document.createElement("label");
+lebel1.setAttribute("for","text");
+lebel1.textContent="Full name : ";
+div1.appendChild(lebel1);
+let textarea=document.createElement("input");
+textarea.setAttribute("type","text");
+textarea.setAttribute("id","fname");
+textarea.setAttribute("name","fname");
+textarea.style.width="100px";
+textarea.style.marginRight="5px";
+textarea.style.marginBottom="5px";
+div1.appendChild(textarea);
+//image (lebel text area )
+let lebel2=document.createElement("label");
+lebel2.setAttribute("for","text");
+lebel2.textContent="Image URL : ";
+div1.appendChild(lebel2);
+let textarea1=document.createElement("input");
+textarea1.setAttribute("type","text");
+textarea1.setAttribute("id","fname");
+textarea1.setAttribute("name","fname");
+textarea1.style.width="100px";
+div1.appendChild(textarea1);
+//--------------------------------------------
 //choose department
 let sform=document.createElement("form");
 let sList=document.createElement("SELECT");
@@ -92,6 +120,7 @@ sform.appendChild(sList1);
 for(let i=0;i<arrOFoption.length;i++){
 let opList1=document.createElement("option");
 opList1.textContent=arrOFlevel[i];
+sList1.style.margin="5px";
 sList1.appendChild(opList1);
 }
 //-------------------------------------------
@@ -104,18 +133,24 @@ return seq;
 //create submit button 
 var selecteddep="";
   var selectedlev="";
-  let empinfocard=document.getElementById("empinfocard");
+  var enterfulname="";
+ 
 function btnfun(){
    selecteddep = sList.options[sList.selectedIndex].text;
    selectedlev = sList1.options[sList1.selectedIndex].text;
-   for(let i =0;i<employee.allemp.length;i++){
-  if((employee.allemp[i].department==selecteddep)&&(employee.allemp[i].level==selectedlev)){
-    employee.allemp[i].render(employee.allemp[i].empid(),empinfocard);
+
+   enterfulname = textarea.value;
+  let newemp =new employee(1006,enterfulname,selecteddep,selectedlev);
+  displayemp();
+}
+function displayemp()
+{
+  empinfocard.innerHTML="";
+  for(let i =0;i<allemp.length;i++){
+    allemp[i].render(allemp[i].empid(),empinfocard);
+
   }
 
-   }
-   
-//console.log(selectedlev);
 }
 let subButton=document.createElement("input");
 subButton.setAttribute("type","submit");
@@ -127,6 +162,12 @@ div1.appendChild(subButton);
 subButton.addEventListener("click",btnfun);
 
 //-------------------------------------------
+
+ /*for(let i =0;i<allemp.length;i++){
+    allemp[i].render(allemp[i].empid(),empinfocard);
+  }*/
+  displayemp();
+
 
 
 add_all_emp_info_localStorage();
