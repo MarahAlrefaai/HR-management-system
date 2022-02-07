@@ -1,4 +1,7 @@
 'use strict';
+//hello im events 2 
+
+
 let allemp=[];
 let empinfocard=document.getElementById("empinfocard");
 function employee (EmployeeID,FullName,Department,Level)
