@@ -27,7 +27,7 @@ empinfocard1.appendChild(parentdiv);
   let div3=document.createElement("div");
   parentdiv.appendChild(div3);
   let nh2=document.createElement("h5");
-  nh2.textContent="name: "+ this.fullname+"- id : "+this.employeeId+"\n department : "+this.department+"- level : "+this.level+"\n"+ empid1
+  nh2.textContent="name: "+ this.fullname+"-id : "+this.employeeId+"\n department: "+this.department+"-level: "+this.level+"\n"+ empid1
   div3.appendChild(nh2);
 
 };
